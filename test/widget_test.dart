@@ -148,8 +148,8 @@ void main() {
     await tester.pump(Duration(milliseconds:5000));
   });
 
-  testWidgets('details tester.', (WidgetTester tester) async{
-    await tester.pumpWidget(buildTestableWidget(Detail()));
-    //expect(find.byType(AppBar), findsOneWidget);
-  });
+  // testWidgets('details tester.', (WidgetTester tester) async{
+  //   //await tester.pumpWidget(buildTestableWidget(Detail()));
+  //   //expect(find.byType(AppBar), findsOneWidget);
+  // });
 }
