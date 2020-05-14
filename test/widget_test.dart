@@ -6,6 +6,7 @@
 
 import 'dart:ffi';
 
+import 'package:flappy_search_bar/flappy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:famnet/widgets/groups.dart';
 import 'package:famnet/widgets/todo.dart';
@@ -129,7 +130,6 @@ void main() {
     await tester.pump(Duration(milliseconds:500));
     await tester.tap(find.byType(TextField)); //Tap the text field.
     await tester.pump(Duration(milliseconds:500));
-    // await tester.enterText(find.byType(TextField), 'TEST\n');
     // await tester.tap(find.byElementType(Text));
     // expect(find.byType(Container), findsWidgets);
     await tester.tap(find.byType(IconButton)); //Test back button.
@@ -138,6 +138,19 @@ void main() {
 
   testWidgets('Searchbar tester.', (WidgetTester tester) async{
     await tester.pumpWidget(buildTestableWidget(Home()));
+    expect(find.byType(TextField), findsOneWidget);
+    expect(find.byKey(new Key("safearea")), findsOneWidget);
+    await tester.tap(find.byType(TextField));
+    // await tester.enterText(find.byType(TextField), 'TEST\n');
+    await tester.tap(find.byKey(new Key("searchbar")));
+    await tester.pump(Duration(milliseconds:5000));
+    await tester.enterText(find.byKey(new Key("searchbar")), "TEST");
+    await tester.pump(Duration(milliseconds:5000));
+    await tester.tap(find.byKey(new Key("TEST")));
+    // await tester.tap(backButton);
   });
 
+  // testWidgets('_getAllPosts tester.', (WidgetTester tester) async{
+  //   await tester.pumpWidget(buildTestableWidget(_getALlPosts("TEST")));
+  // });
 }

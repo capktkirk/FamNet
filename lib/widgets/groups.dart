@@ -81,8 +81,8 @@ class _HomeState extends State<Home> {
       ),
       body: SafeArea(
         key: new Key("safearea"),
-
         child: SearchBar<Post>(
+          key: new Key("searchbar"),
           searchBarPadding: EdgeInsets.symmetric(horizontal: 10),
           headerPadding: EdgeInsets.symmetric(horizontal: 10),
           listPadding: EdgeInsets.symmetric(horizontal: 10),
@@ -114,6 +114,7 @@ class _HomeState extends State<Home> {
               child: ListTile(
                 title: Text(
                   post.title,
+                  key: new Key(post.title),
                   ),
                 isThreeLine: true,
                 subtitle: Text(post.body),
@@ -193,16 +194,6 @@ class Detail extends StatelessWidget {
         label: Text("Add Group"),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
-    );
-  }
-}
-class add extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      /*
-       * TODO : Fill out this, it will not be a Container, might need to make the groups page first.
-       */
     );
   }
 }
