@@ -146,11 +146,10 @@ void main() {
     await tester.pump(Duration(milliseconds:5000));
     await tester.enterText(find.byKey(new Key("searchbar")), "TEST");
     await tester.pump(Duration(milliseconds:5000));
-    await tester.tap(find.byKey(new Key("TEST")));
-    // await tester.tap(backButton);
   });
 
-  // testWidgets('_getAllPosts tester.', (WidgetTester tester) async{
-  //   await tester.pumpWidget(buildTestableWidget(_getALlPosts("TEST")));
-  // });
+  testWidgets('details tester.', (WidgetTester tester) async{
+    await tester.pumpWidget(buildTestableWidget(Detail()));
+    //expect(find.byType(AppBar), findsOneWidget);
+  });
 }

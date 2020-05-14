@@ -102,9 +102,6 @@ class _HomeState extends State<Home> {
               ),
             ],
           ),
-          // onCancelled: () {
-          //   print("Cancelled triggered");
-          // },
           mainAxisSpacing: 10,
           crossAxisSpacing: 10,
           crossAxisCount: 2,
@@ -114,7 +111,6 @@ class _HomeState extends State<Home> {
               child: ListTile(
                 title: Text(
                   post.title,
-                  key: new Key(post.title),
                   ),
                 isThreeLine: true,
                 subtitle: Text(post.body),
@@ -234,14 +230,6 @@ class Users {
         myUsers.add(value["uid"]);
       }
         }
-      /*data.entries.forEach((e) {
-        if(e!=null) {
-          print(e.value);
-          var vmap = Map.from(e.value);
-          myUsers.add(Map.from(vmap));
-        }
-      });
-    }*/
     else{
       hasData=0;
     }
@@ -278,29 +266,7 @@ void _saveData(Post post) async {
   }
 }
 class FirebaseGroups {
-  //Following code is how to implement queries as a stream rather than a single touch. Leaving in as reference.
-  /*
-  /// FirebaseTodos.getTodoStream("-KriJ8Sg4lWIoNswKWc4", _updateTodo)
-  /// .then((StreamSubscription s) => _subscriptionTodo = s);
-  static Future<StreamSubscription<Event>> getTodoStream(String todoKey,
-      void onData(Todo todo)) async {
-    String accountKey = await Preferences.getAccountKey();
 
-    StreamSubscription<Event> subscription = FirebaseDatabase.instance
-        .reference()
-        .child("accounts")
-        .child(accountKey)
-        .child("todos")
-        .child(todoKey)
-        .onValue
-        .listen((Event event) {
-      var todo = new Todo.fromJson(event.snapshot.key, event.snapshot.value);
-      onData(todo);
-    });
-
-    return subscription;
-  }
-  */
   /// FirebaseTodos.getTodo("-KriJ8Sg4lWIoNswKWc4").then(_updateTodo);
   /// This function queries the db once to retrieve group info
   static Future<Gcreation> getGroups(String todoKey) async {
@@ -344,29 +310,3 @@ class FirebaseGroups {
   }
 }
 
-
-
-
-//Leaving in this code as a reference. May be important later
-/*
-class Preferences {
-  static const String ACCOUNT_KEY = "accountKey";
-
-  static Future<bool> setAccountKey(String accountKey) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setString(ACCOUNT_KEY, accountKey);
-    return prefs.commit();
-  }
-
-  static Future<String> getAccountKey() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String accountKey = prefs.getString(ACCOUNT_KEY);
-
-    // workaround - simulate a login setting this
-    if (accountKey == null) {
-      accountKey = "-KriFiUADpl-X07hnBC-";
-    }
-
-    return accountKey;
-  }
-}*/
